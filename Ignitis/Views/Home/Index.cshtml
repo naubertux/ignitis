@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Pagrindinis";
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/registracijosPozymiai")
+}
+
+<br /><br />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Registracijos požymiai</th>
+                    <th>Reikšmė</th>
+                </tr>
+            </thead>
+            <tbody data-bind='dataTablesForEach: { data: registracijosPozymiai(), dataTableOptions: {} }'
+                <tr>
+                    <td data-bind="text: pavadinimas"></td>
+                    <td><select class="form-control" data-bind="options: klasifikatorius, optionsText: 'Pavadinimas', optionsValue: 'KlasifikId', value: klasifikId, optionsCaption: 'Pasirinkite', enable: $root.koreguotiPozymius"></select></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-default" data-bind="click: koreguotiPozymiusClick, enable: !koreguotiPozymius()">Koreguoti požymius</button>
+        <button type="button" class="btn btn-default" data-bind="click: issaugotiPataisymusClick, enable: koreguotiPozymius">Išsaugoti pataisymus</button>
+        <button type="button" class="btn btn-default" data-bind="click: atsauktiPataisymusClick, enable: koreguotiPozymius">Atšaukti pataisymus</button>
+    </div>
+</div>
+
+
